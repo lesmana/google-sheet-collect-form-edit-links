@@ -1,0 +1,35 @@
+var sheetName = "Edit Response URLs";
+
+function getForm(spreadsheet) {
+  var formUrl = spreadsheet.getFormUrl();
+  var form = FormApp.openByUrl(formUrl);
+  return form;
+}
+
+function getSheet(spreadsheet) {
+  var sheet = spreadsheet.getSheetByName(sheetName);
+  if (sheet != null) {
+    sheet.clear();
+  } else {
+    sheet = spreadsheet.insertSheet(sheetName);
+  }
+  return sheet;
+}
+
+function insertUrls(form, sheet) {
+  var responses = form.getResponses();
+  for (var i = 0; i < responses.length; i++) {
+    var response = responses[i];
+    var url = response.getEditResponseUrl();
+    var row = [url];
+    sheet.appendRow(row);
+  }
+}
+
+function insertEditResponseUrls() {
+  var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  var form = getForm(spreadsheet);
+  var sheet = getSheet(spreadsheet);
+  insertUrls(form, sheet);
+}
+

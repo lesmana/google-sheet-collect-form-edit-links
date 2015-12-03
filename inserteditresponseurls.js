@@ -6,6 +6,17 @@ To Public License, Version 2, as published by Sam Hocevar. See
 http://www.wtfpl.net/ for more details.
 */
 
+function onOpen(e) {
+  SpreadsheetApp.getUi()
+      .createAddonMenu()
+      .addItem('insert edit response urls', 'insertEditResponseUrls')
+      .addToUi();
+}
+
+function onInstall(e) {
+  onOpen(e);
+}
+
 var sheetName = "Edit Response URLs";
 
 function getForm(spreadsheet) {

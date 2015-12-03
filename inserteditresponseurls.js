@@ -7,6 +7,25 @@
  */
 
 /**
+ * insert edit response urls.
+ *
+ * script expects to be bound to a spreadsheet
+ * which is linked to a form.
+ *
+ * if bound to a document script will add a menu item under the addon menu
+ * (at least after document is reopened or onOpen() is run manually).
+ *
+ * script can be run by invoking the menu item
+ * or by running insertEditResponseUrls() manually.
+ *
+ * if run script will create a new sheet
+ * or clear the sheet if it already exists.
+ * then it will be get the linked form,
+ * extract the edit response urls,
+ * and add them to the sheet row by row.
+ */
+
+/**
  * add menu item when containing sheet is opened.
  * can be run manually.
  */

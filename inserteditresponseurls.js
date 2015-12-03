@@ -37,13 +37,6 @@ function onOpen(e) {
 }
 
 /**
- * add menu item when installed as addon.
- */
-function onInstall(e) {
-  onOpen(e);
-}
-
-/**
  * name of the sheet to be created for the edit response urls.
  * if already exists sheet will be cleared.
  */

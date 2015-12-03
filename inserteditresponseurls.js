@@ -37,12 +37,6 @@ function onOpen(e) {
 }
 
 /**
- * name of the sheet to be created for the edit response urls.
- * if already exists sheet will be cleared.
- */
-var sheetName = "Edit Response URLs";
-
-/**
  * get form from spreadsheet.
  * returns the form.
  * does not check for errors.
@@ -58,7 +52,7 @@ function getForm(spreadsheet) {
  * returns the created or cleared sheet.
  * does not check for errors.
  */
-function getSheet(spreadsheet) {
+function getSheet(spreadsheet, sheetName) {
   var sheet = spreadsheet.getSheetByName(sheetName);
   if (sheet != null) {
     sheet.clear();
@@ -84,7 +78,6 @@ function insertUrls(form, sheet) {
 
 /**
  * insert edit response urls from a linked form to a new sheet.
- * sheet name controlled by variable named sheetName.
  * sheet will be cleared if it already exists.
  * does not check for errors.
  * main function.
@@ -94,7 +87,7 @@ function insertUrls(form, sheet) {
 function insertEditResponseUrls() {
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   var form = getForm(spreadsheet);
-  var sheet = getSheet(spreadsheet);
+  var sheet = getSheet(spreadsheet, "Edit Response URLs");
   insertUrls(form, sheet);
 }
 

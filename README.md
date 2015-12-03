@@ -40,6 +40,14 @@ note that for the moment there is no update mechanism.
 edit response urls from new responses will not be listed.
 to list the new edit response urls the script has to be invoked again.
 
+Todo
+----
+
+* customizable sheet name.
+* auto update urls from new responses.
+* tests.
+* replace spreadsheet.getFormUrl() with getFormId() if possible.
+
 License
 -------
 

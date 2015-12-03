@@ -46,9 +46,6 @@ var sheetName = "Edit Response URLs";
  * get form from spreadsheet.
  * returns the form.
  * does not check for errors.
- * there is no getFormId().
- * if there is use that instead.
- * then use openById().
  */
 function getForm(spreadsheet) {
   var formUrl = spreadsheet.getFormUrl();

@@ -12,23 +12,18 @@
  * script expects to be bound to a spreadsheet
  * which is linked to a form.
  *
- * if bound to a document script will add a menu item under the addon menu
- * (at least after document is reopened or onOpen() is run manually).
- *
- * script can be run by invoking the menu item
- * or by running insertEditResponseUrls() manually.
+ * script can be run by invoking insertEditResponseUrls() manually.
  *
  * if run script will create a new sheet
  * or clear the sheet if it already exists.
- * then it will be get the linked form,
+ * then it will get the linked form,
  * extract the edit response urls,
- * and add them to the sheet row by row.
+ * and add them to the sheet.
  */
 
 /**
  * get form from spreadsheet.
  * returns the form.
- * does not check for errors.
  */
 function getForm(spreadsheet) {
   var formUrl = spreadsheet.getFormUrl();
@@ -39,7 +34,6 @@ function getForm(spreadsheet) {
 /**
  * create sheet or clear sheet if exists.
  * returns the created or cleared sheet.
- * does not check for errors.
  */
 function getSheet(spreadsheet, sheetName) {
   var sheet = spreadsheet.getSheetByName(sheetName);
@@ -53,7 +47,6 @@ function getSheet(spreadsheet, sheetName) {
 
 /**
  * insert edit response urls from form to sheet.
- * does not check for errors.
  */
 function insertUrls(form, sheet) {
   var responses = form.getResponses();
@@ -68,10 +61,8 @@ function insertUrls(form, sheet) {
 /**
  * insert edit response urls from a linked form to a new sheet.
  * sheet will be cleared if it already exists.
- * does not check for errors.
- * main function.
- * called from the menu item added by onOpen().
- * can be run manually.
+ *
+ * run this function manually to get desired effect.
  */
 function insertEditResponseUrls() {
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();

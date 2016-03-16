@@ -61,7 +61,7 @@ function getSheet(spreadsheet, sheetName) {
 insert edit response urls from response to sheet
 also get name and email if defined
 */
-function insertUrlsFromResponse(response, sheet) {
+function insertUrlsFromResponse(response) {
   var itemResponses = response.getItemResponses();
   for (var i = 0; i < itemResponses.length; i++) {
     var itemResponse = itemResponses[i];
@@ -75,7 +75,7 @@ function insertUrlsFromResponse(response, sheet) {
   }
   var url = response.getEditResponseUrl();
   var row = [name, email, url];
-  sheet.appendRow(row);
+  return row
 }
 
 /*
@@ -87,7 +87,8 @@ function insertUrlsFromForm(form, sheet) {
   var responses = form.getResponses();
   for (var i = 0; i < responses.length; i++) {
     var response = responses[i];
-    insertUrlsFromResponse(response, sheet)
+    var row = insertUrlsFromResponse(response)
+    sheet.appendRow(row);
   }
 }
 

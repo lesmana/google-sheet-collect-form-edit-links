@@ -1,57 +1,54 @@
-Google Form Insert Edit Response URLs
-=====================================
+Collect Google Form Edit Response Links
+=======================================
 
-A google sheet script to collect google form edit response urls.
+A google sheet script to collect google form edit response links.
 
-This script, when bound to a google spreadsheet linked to a google form,
-will collect the edit response urls for the form responses.
-It will collect the edit response urls from past responses,
-as long as those responses are still in the form (not deleted).
+This script is meant to be put in a google sheet linked to a google form.
+It will collect the edit response links of all form responses.
+The collected links will be put in a new sheet in the spreadsheet.
 
-The edit response urls will be listed in a new sheet in the spreadsheet.
-
-Installation
-------------
+How to install
+--------------
 
 * create a google form.
-* collect responses in a spreadsheet.
-* open spreadsheet.
+* collect responses in a sheet.
+* open sheet.
 * open script editor from sheet.
 * copy the code of the script and paste it in the script editor.
 * save the script under some sensible name.
 
-now either close and reopen the spreadsheet
-or run the onOpen() function manually.
-it will install a menu item under the addons menu.
+How to use
+----------
 
-the name of the script will be the name of the menu item.
+* open script editor from sheet.
+* run the function insertEditResponseUrls().
 
-Usage
+This will create a new sheet with the name "Edit Response URLs".
+The collected links will be put in that sheet.
+If a sheet with that name already exists
+then the previous content is cleared.
+
+Notes
 -----
 
-invoke the menu item or open the script editor
-and run the function insertEditResponseUrls() manually.
+The process is a one time process. There is no update mechanism.
+To collect the edit links from new responses
+the function has to invoked again.
 
-this will create a new sheet named "Edit Response URLs".
-the edit response urls will be in the new sheet.
-if the sheet already existed then the previous content is cleared.
-
-note that for the moment there is no update mechanism.
-edit response urls from new responses will not be listed.
-to list the new edit response urls the script has to be invoked again.
+Under certain circumstances the responses in the sheet
+can deviate from the responses in the form.
+This script only looks at the responses stored in the form.
 
 Todo
 ----
 
-* customizable sheet name.
-* auto update urls from new responses.
-* tests.
-* replace spreadsheet.getFormUrl() with getFormId() if possible.
+* collect name and email if field exists in form.
+* replace spreadsheet.getFormUrl() with getFormId() if available.
 
 License
 -------
 
-Copyright (C) 2015 Lesmana Zimmer <lesmana@gmx.de>
+Copyright 2015 Lesmana Zimmer <lesmana@gmx.de>
 
 This work is free. You can redistribute it and/or modify it under the
 terms of the Do What The Fuck You Want To Public License, Version 2,

@@ -9,16 +9,16 @@
 /**
  * insert edit response urls.
  *
- * script expects to be bound to a spreadsheet
+ * script expects to be put in a sheet
  * which is linked to a form.
  *
  * run runThisFunction() to get desired effect.
  *
- * if run script will create a new sheet
- * or clear the sheet if it already exists.
- * then it will get the linked form,
- * extract the edit response urls,
- * and add them to the sheet.
+ * script will:
+ * get the linked form.
+ * create a new sheet or clear the existing one.
+ * extract the edit response urls.
+ * add them to the sheet.
  */
 
 /**

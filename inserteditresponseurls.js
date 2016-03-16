@@ -43,7 +43,7 @@ function getSheet(spreadsheet, sheetName) {
   return sheet;
 }
 
-function insertUrlsFromResponse(response) {
+function getDataFromResponse(response) {
   var itemResponses = response.getItemResponses();
   for (var i = 0; i < itemResponses.length; i++) {
     var itemResponse = itemResponses[i];
@@ -67,7 +67,7 @@ function getData(form) {
   var responses = form.getResponses();
   for (var i = 0; i < responses.length; i++) {
     var response = responses[i];
-    var row = insertUrlsFromResponse(response)
+    var row = getDataFromResponse(response)
     rows.push(row)
   }
   return rows

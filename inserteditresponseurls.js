@@ -60,7 +60,7 @@ function insertUrlsFromResponse(response) {
   return row
 }
 
-function insertUrlsFromForm(form) {
+function getData(form) {
   var rows = []
   var titleRow = ['name', 'email', 'url']
   rows.push(titleRow)
@@ -84,7 +84,7 @@ function insertEditResponseUrls() {
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   var form = getForm(spreadsheet);
   var sheet = getSheet(spreadsheet, "Edit Response URLs");
-  data = insertUrlsFromForm(form);
+  data = getData(form);
   insertData(sheet, data)
 }
 

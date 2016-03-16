@@ -26,17 +26,6 @@
  */
 
 /**
- * add menu item when containing sheet is opened.
- * can be run manually.
- */
-function onOpen(e) {
-  SpreadsheetApp.getUi()
-      .createAddonMenu()
-      .addItem('insert edit response urls', 'insertEditResponseUrls')
-      .addToUi();
-}
-
-/**
  * get form from spreadsheet.
  * returns the form.
  * does not check for errors.

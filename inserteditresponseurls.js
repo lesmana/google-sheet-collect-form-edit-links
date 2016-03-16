@@ -70,6 +70,8 @@ function insertUrlsFromResponse(response, sheet) {
  * insert edit response urls from form to sheet.
  */
 function insertUrlsFromForm(form, sheet) {
+  var titleRow = ['name', 'email', 'url']
+  sheet.appendRow(titleRow);
   var responses = form.getResponses();
   for (var i = 0; i < responses.length; i++) {
     var response = responses[i];

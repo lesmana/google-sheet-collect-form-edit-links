@@ -12,7 +12,7 @@
  * script expects to be bound to a spreadsheet
  * which is linked to a form.
  *
- * script can be run by invoking insertEditResponseUrls() manually.
+ * run runThisFunction() to get desired effect.
  *
  * if run script will create a new sheet
  * or clear the sheet if it already exists.
@@ -20,6 +20,13 @@
  * extract the edit response urls,
  * and add them to the sheet.
  */
+
+/**
+ * run this function to get desired effect.
+ */
+function runThisFunction() {
+  insertEditResponseUrls();
+}
 
 /**
  * get form from spreadsheet.

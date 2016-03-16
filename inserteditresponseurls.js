@@ -61,12 +61,17 @@ function insertUrlsFromResponse(response) {
 }
 
 function insertUrlsFromForm(form, sheet) {
+  var rows = []
   var titleRow = ['name', 'email', 'url']
-  sheet.appendRow(titleRow);
+  rows.push(titleRow)
   var responses = form.getResponses();
   for (var i = 0; i < responses.length; i++) {
     var response = responses[i];
     var row = insertUrlsFromResponse(response)
+    rows.push(row)
+  }
+  for (var i = 0; i < rows.length; i++) {
+    var row = rows[i]
     sheet.appendRow(row);
   }
 }

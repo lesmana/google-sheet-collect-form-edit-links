@@ -42,7 +42,6 @@ This script only looks at the responses stored in the form.
 Todo
 ----
 
-* collect name and email if field exists in form.
 * replace spreadsheet.getFormUrl() with getFormId() if available.
 
 License

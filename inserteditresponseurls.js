@@ -47,10 +47,22 @@ function getSheet(spreadsheet, sheetName) {
 
 /**
  * insert edit response urls from response to sheet
+ * also get name and email if defined
  */
 function insertUrlsFromResponse(response, sheet) {
+  var itemResponses = response.getItemResponses();
+  for (var i = 0; i < itemResponses.length; i++) {
+    var itemResponse = itemResponses[i];
+    var title = itemResponse.getItem().getTitle();
+    if (title.toLowerCase() == 'name') {
+      var name = itemResponse.getResponse();
+    }
+    if (title.toLowerCase() == 'email') {
+      var email = itemResponse.getResponse();
+    }
+  }
   var url = response.getEditResponseUrl();
-  var row = [url];
+  var row = [name, email, url];
   sheet.appendRow(row);
 }
 

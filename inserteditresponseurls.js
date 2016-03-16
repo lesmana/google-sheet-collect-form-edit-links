@@ -60,7 +60,7 @@ function insertUrlsFromResponse(response) {
   return row
 }
 
-function insertUrlsFromForm(form, sheet) {
+function insertUrlsFromForm(form) {
   var rows = []
   var titleRow = ['name', 'email', 'url']
   rows.push(titleRow)
@@ -70,6 +70,10 @@ function insertUrlsFromForm(form, sheet) {
     var row = insertUrlsFromResponse(response)
     rows.push(row)
   }
+  return rows
+}
+
+function insertData(sheet, rows) {
   for (var i = 0; i < rows.length; i++) {
     var row = rows[i]
     sheet.appendRow(row);
@@ -80,6 +84,7 @@ function insertEditResponseUrls() {
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   var form = getForm(spreadsheet);
   var sheet = getSheet(spreadsheet, "Edit Response URLs");
-  insertUrlsFromForm(form, sheet);
+  data = insertUrlsFromForm(form);
+  insertData(sheet, data)
 }
 

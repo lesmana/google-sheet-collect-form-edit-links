@@ -84,7 +84,7 @@ function insertEditResponseUrls() {
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   var form = getForm(spreadsheet);
   var sheet = getSheet(spreadsheet, "Edit Response URLs");
-  data = getData(form);
+  var data = getData(form);
   insertData(sheet, data)
 }
 

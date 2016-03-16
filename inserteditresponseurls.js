@@ -9,7 +9,9 @@ http://www.wtfpl.net/ for more details.
 */
 
 /*
-insert edit response urls.
+collect google form edit response links.
+
+https://github.com/lesmana/google-sheet-collect-form-edit-links
 
 script expects to be put in a sheet
 which is linked to a form.

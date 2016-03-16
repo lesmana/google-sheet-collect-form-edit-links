@@ -1,47 +1,48 @@
-/**
- * This program is free software. It comes without any warranty, to
- * the extent permitted by applicable law. You can redistribute it
- * and/or modify it under the terms of the Do What The Fuck You Want
- * To Public License, Version 2, as published by Sam Hocevar. See
- * http://www.wtfpl.net/ for more details.
- */
+/*
+This program is free software. It comes without any warranty, to
+the extent permitted by applicable law. You can redistribute it
+and/or modify it under the terms of the Do What The Fuck You Want
+To Public License, Version 2, as published by Sam Hocevar. See
+http://www.wtfpl.net/ for more details.
+*/
 
-/**
- * insert edit response urls.
- *
- * script expects to be put in a sheet
- * which is linked to a form.
- *
- * run runThisFunction() to get desired effect.
- *
- * script will:
- * get the linked form.
- * create a new sheet or clear the existing one.
- * extract the edit response urls.
- * add them to the sheet.
- */
+/*
+insert edit response urls.
 
-/**
- * run this function to get desired effect.
- */
+script expects to be put in a sheet
+which is linked to a form.
+
+run runThisFunction() to get desired effect.
+
+script will:
+* get the linked form.
+* create a new sheet or clear the existing one.
+* extract the edit response urls.
+* add them to the sheet.
+
+*/
+
+/*
+run this function to get desired effect.
+*/
 function runThisFunction() {
   insertEditResponseUrls();
 }
 
-/**
- * get form from spreadsheet.
- * returns the form.
- */
+/*
+get form from spreadsheet.
+returns the form.
+*/
 function getForm(spreadsheet) {
   var formUrl = spreadsheet.getFormUrl();
   var form = FormApp.openByUrl(formUrl);
   return form;
 }
 
-/**
- * create sheet or clear sheet if exists.
- * returns the created or cleared sheet.
- */
+/*
+create sheet or clear sheet if exists.
+returns the created or cleared sheet.
+*/
 function getSheet(spreadsheet, sheetName) {
   var sheet = spreadsheet.getSheetByName(sheetName);
   if (sheet != null) {
@@ -52,10 +53,10 @@ function getSheet(spreadsheet, sheetName) {
   return sheet;
 }
 
-/**
- * insert edit response urls from response to sheet
- * also get name and email if defined
- */
+/*
+insert edit response urls from response to sheet
+also get name and email if defined
+*/
 function insertUrlsFromResponse(response, sheet) {
   var itemResponses = response.getItemResponses();
   for (var i = 0; i < itemResponses.length; i++) {
@@ -73,9 +74,9 @@ function insertUrlsFromResponse(response, sheet) {
   sheet.appendRow(row);
 }
 
-/**
- * insert edit response urls from form to sheet.
- */
+/*
+insert edit response urls from form to sheet.
+*/
 function insertUrlsFromForm(form, sheet) {
   var titleRow = ['name', 'email', 'url']
   sheet.appendRow(titleRow);
@@ -86,12 +87,12 @@ function insertUrlsFromForm(form, sheet) {
   }
 }
 
-/**
- * insert edit response urls from a linked form to a new sheet.
- * sheet will be cleared if it already exists.
- *
- * run this function manually to get desired effect.
- */
+/*
+insert edit response urls from a linked form to a new sheet.
+sheet will be cleared if it already exists.
+
+run this function manually to get desired effect.
+*/
 function insertEditResponseUrls() {
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   var form = getForm(spreadsheet);

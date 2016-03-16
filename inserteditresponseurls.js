@@ -46,15 +46,22 @@ function getSheet(spreadsheet, sheetName) {
 }
 
 /**
+ * insert edit response urls from response to sheet
+ */
+function insertUrlsFromResponse(response, sheet) {
+  var url = response.getEditResponseUrl();
+  var row = [url];
+  sheet.appendRow(row);
+}
+
+/**
  * insert edit response urls from form to sheet.
  */
-function insertUrls(form, sheet) {
+function insertUrlsFromForm(form, sheet) {
   var responses = form.getResponses();
   for (var i = 0; i < responses.length; i++) {
     var response = responses[i];
-    var url = response.getEditResponseUrl();
-    var row = [url];
-    sheet.appendRow(row);
+    insertUrlsFromResponse(response, sheet)
   }
 }
 
@@ -68,6 +75,6 @@ function insertEditResponseUrls() {
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   var form = getForm(spreadsheet);
   var sheet = getSheet(spreadsheet, "Edit Response URLs");
-  insertUrls(form, sheet);
+  insertUrlsFromForm(form, sheet);
 }
 

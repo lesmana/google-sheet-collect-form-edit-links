@@ -26,27 +26,16 @@ script will:
 
 */
 
-/*
-run this function to get desired effect.
-*/
 function runThisFunction() {
   insertEditResponseUrls();
 }
 
-/*
-get form from spreadsheet.
-returns the form.
-*/
 function getForm(spreadsheet) {
   var formUrl = spreadsheet.getFormUrl();
   var form = FormApp.openByUrl(formUrl);
   return form;
 }
 
-/*
-create sheet or clear sheet if exists.
-returns the created or cleared sheet.
-*/
 function getSheet(spreadsheet, sheetName) {
   var sheet = spreadsheet.getSheetByName(sheetName);
   if (sheet != null) {
@@ -57,10 +46,6 @@ function getSheet(spreadsheet, sheetName) {
   return sheet;
 }
 
-/*
-insert edit response urls from response to sheet
-also get name and email if defined
-*/
 function insertUrlsFromResponse(response) {
   var itemResponses = response.getItemResponses();
   for (var i = 0; i < itemResponses.length; i++) {
@@ -78,9 +63,6 @@ function insertUrlsFromResponse(response) {
   return row
 }
 
-/*
-insert edit response urls from form to sheet.
-*/
 function insertUrlsFromForm(form, sheet) {
   var titleRow = ['name', 'email', 'url']
   sheet.appendRow(titleRow);
@@ -92,12 +74,6 @@ function insertUrlsFromForm(form, sheet) {
   }
 }
 
-/*
-insert edit response urls from a linked form to a new sheet.
-sheet will be cleared if it already exists.
-
-run this function manually to get desired effect.
-*/
 function insertEditResponseUrls() {
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   var form = getForm(spreadsheet);

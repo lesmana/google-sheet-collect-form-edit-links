@@ -43,18 +43,28 @@ function getSheet(spreadsheet, sheetName) {
   return sheet;
 }
 
-function getDataFromResponse(response) {
-  var itemResponses = response.getItemResponses();
-  for (var i = 0; i < itemResponses.length; i++) {
-    var itemResponse = itemResponses[i];
-    var title = itemResponse.getItem().getTitle();
+function getIndexes(items) {
+  for (var i = 0; i < items.length; i++) {
+    var item = items[i];
+    var title = item.getTitle();
     if (title.toLowerCase() == 'name') {
-      var name = itemResponse.getResponse();
+      var name = i
     }
     if (title.toLowerCase() == 'email') {
-      var email = itemResponse.getResponse();
+      var email = i
     }
   }
+  var indexes = {
+    name: name,
+    email: email
+  }
+  return indexes
+}
+
+function getDataFromResponse(response, indexes) {
+  var itemResponses = response.getItemResponses();
+  var name = itemResponses[indexes.name].getResponse()
+  var email = itemResponses[indexes.email].getResponse()
   var url = response.getEditResponseUrl();
   var row = [name, email, url];
   return row
@@ -64,10 +74,11 @@ function getData(form) {
   var rows = []
   var titleRow = ['name', 'email', 'url']
   rows.push(titleRow)
+  indexes = getIndexes(form.getItems())
   var responses = form.getResponses();
   for (var i = 0; i < responses.length; i++) {
     var response = responses[i];
-    var row = getDataFromResponse(response)
+    var row = getDataFromResponse(response, indexes)
     rows.push(row)
   }
   return rows

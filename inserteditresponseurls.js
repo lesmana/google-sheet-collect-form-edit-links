@@ -48,45 +48,45 @@ function getIndexes(items) {
     var item = items[i];
     var title = item.getTitle();
     if (title.toLowerCase() == 'name') {
-      var name = i
+      var name = i;
     }
     if (title.toLowerCase() == 'email') {
-      var email = i
+      var email = i;
     }
   }
   var indexes = {
     name: name,
     email: email
-  }
-  return indexes
+  };
+  return indexes;
 }
 
 function getDataFromResponse(response, indexes) {
   var itemResponses = response.getItemResponses();
-  var name = itemResponses[indexes.name].getResponse()
-  var email = itemResponses[indexes.email].getResponse()
+  var name = itemResponses[indexes.name].getResponse();
+  var email = itemResponses[indexes.email].getResponse();
   var url = response.getEditResponseUrl();
   var row = [name, email, url];
-  return row
+  return row;
 }
 
 function getData(form) {
-  var rows = []
-  var titleRow = ['name', 'email', 'url']
-  rows.push(titleRow)
-  indexes = getIndexes(form.getItems())
+  var rows = [];
+  var titleRow = ['name', 'email', 'url'];
+  rows.push(titleRow);
+  indexes = getIndexes(form.getItems());
   var responses = form.getResponses();
   for (var i = 0; i < responses.length; i++) {
     var response = responses[i];
-    var row = getDataFromResponse(response, indexes)
-    rows.push(row)
+    var row = getDataFromResponse(response, indexes);
+    rows.push(row);
   }
-  return rows
+  return rows;
 }
 
 function insertData(sheet, rows) {
   for (var i = 0; i < rows.length; i++) {
-    var row = rows[i]
+    var row = rows[i];
     sheet.appendRow(row);
   }
 }
@@ -96,6 +96,6 @@ function insertEditResponseUrls() {
   var form = getForm(spreadsheet);
   var sheet = getSheet(spreadsheet, "Edit Response URLs");
   var data = getData(form);
-  insertData(sheet, data)
+  insertData(sheet, data);
 }
 

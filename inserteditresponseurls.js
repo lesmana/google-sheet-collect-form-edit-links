@@ -70,17 +70,22 @@ function getDataFromResponse(formResponse, indexes) {
   return row;
 }
 
-function getData(form) {
+function getData2(formResponses, indexes) {
   var rows = [];
   var titleRow = ['name', 'email', 'url'];
   rows.push(titleRow);
-  indexes = getIndexes(form.getItems());
-  var formResponses = form.getResponses();
   for (var i = 0; i < formResponses.length; i++) {
     var formResponse = formResponses[i];
     var row = getDataFromResponse(formResponse, indexes);
     rows.push(row);
   }
+  return rows;
+}
+
+function getData(form) {
+  indexes = getIndexes(form.getItems());
+  var formResponses = form.getResponses();
+  var rows = getData2(formResponses, indexes)
   return rows;
 }
 

@@ -61,7 +61,7 @@ function getIndexes(items) {
   return indexes;
 }
 
-function getDataFromResponse(formResponse, indexes) {
+function getData3(formResponse, indexes) {
   var itemResponses = formResponse.getItemResponses();
   var name = itemResponses[indexes.name].getResponse();
   var email = itemResponses[indexes.email].getResponse();
@@ -76,7 +76,7 @@ function getData2(formResponses, indexes) {
   rows.push(titleRow);
   for (var i = 0; i < formResponses.length; i++) {
     var formResponse = formResponses[i];
-    var row = getDataFromResponse(formResponse, indexes);
+    var row = getData3(formResponse, indexes);
     rows.push(row);
   }
   return rows;

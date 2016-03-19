@@ -83,7 +83,7 @@ function getData2(formResponses, indexes) {
 }
 
 function getData(form) {
-  indexes = getIndexes(form.getItems());
+  var indexes = getIndexes(form.getItems());
   var formResponses = form.getResponses();
   var rows = getData2(formResponses, indexes)
   return rows;

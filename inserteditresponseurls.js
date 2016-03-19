@@ -61,11 +61,11 @@ function getIndexes(items) {
   return indexes;
 }
 
-function getDataFromResponse(response, indexes) {
-  var itemResponses = response.getItemResponses();
+function getDataFromResponse(formResponse, indexes) {
+  var itemResponses = formResponse.getItemResponses();
   var name = itemResponses[indexes.name].getResponse();
   var email = itemResponses[indexes.email].getResponse();
-  var url = response.getEditResponseUrl();
+  var url = formResponse.getEditResponseUrl();
   var row = [name, email, url];
   return row;
 }
@@ -75,10 +75,10 @@ function getData(form) {
   var titleRow = ['name', 'email', 'url'];
   rows.push(titleRow);
   indexes = getIndexes(form.getItems());
-  var responses = form.getResponses();
-  for (var i = 0; i < responses.length; i++) {
-    var response = responses[i];
-    var row = getDataFromResponse(response, indexes);
+  var formResponses = form.getResponses();
+  for (var i = 0; i < formResponses.length; i++) {
+    var formResponse = formResponses[i];
+    var row = getDataFromResponse(formResponse, indexes);
     rows.push(row);
   }
   return rows;

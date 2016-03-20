@@ -44,29 +44,30 @@ function getSheet(spreadsheet, sheetName) {
 }
 
 function getIndexes(items) {
+  var indexes = []
   for (var i = 0; i < items.length; i++) {
     var item = items[i];
     var title = item.getTitle();
     if (title.toLowerCase() == 'name') {
-      var name = i;
+      indexes.push(item);
     }
     if (title.toLowerCase() == 'email') {
-      var email = i;
+      indexes.push(item);
     }
   }
-  var indexes = {
-    name: name,
-    email: email
-  };
   return indexes;
 }
 
 function getData3(formResponse, indexes) {
-  var itemResponses = formResponse.getItemResponses();
-  var name = itemResponses[indexes.name].getResponse();
-  var email = itemResponses[indexes.email].getResponse();
+  var row = []
+  for (var i = 0; i < indexes.length; i++) {
+    var item = indexes[i];
+    var itemResponse = formResponse.getResponseForItem(item);
+    var response = itemResponse.getResponse()
+    row.push(response)
+  }
   var url = formResponse.getEditResponseUrl();
-  var row = [name, email, url];
+  row.push(url)
   return row;
 }
 

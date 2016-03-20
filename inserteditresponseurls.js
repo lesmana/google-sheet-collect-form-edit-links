@@ -72,7 +72,13 @@ function getData3(formResponse, indexes) {
 }
 
 function getTitleRow(indexes) {
-  var titleRow = ['name', 'email', 'url'];
+  var titleRow = [];
+  for (var i = 0; i < indexes.length; i++) {
+    var item = indexes[i];
+    var title = item.getTitle()
+    titleRow.push(title)
+  }
+  titleRow.push('url')
   return titleRow;
 }
 

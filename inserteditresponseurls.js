@@ -43,25 +43,25 @@ function getSheet(spreadsheet, sheetName) {
   return sheet;
 }
 
-function getIndexes(items) {
-  var indexes = []
+function getNameEmailItems(items) {
+  var nameemailitems = []
   for (var i = 0; i < items.length; i++) {
     var item = items[i];
     var title = item.getTitle();
     if (title.toLowerCase() == 'name') {
-      indexes.push(item);
+      nameemailitems.push(item);
     }
     if (title.toLowerCase() == 'email') {
-      indexes.push(item);
+      nameemailitems.push(item);
     }
   }
-  return indexes;
+  return nameemailitems;
 }
 
-function getDataRow(formResponse, indexes) {
+function getDataRow(formResponse, nameemailitems) {
   var row = []
-  for (var i = 0; i < indexes.length; i++) {
-    var item = indexes[i];
+  for (var i = 0; i < nameemailitems.length; i++) {
+    var item = nameemailitems[i];
     var itemResponse = formResponse.getResponseForItem(item);
     var response = itemResponse.getResponse()
     row.push(response)
@@ -71,10 +71,10 @@ function getDataRow(formResponse, indexes) {
   return row;
 }
 
-function getTitleRow(indexes) {
+function getTitleRow(nameemailitems) {
   var titleRow = [];
-  for (var i = 0; i < indexes.length; i++) {
-    var item = indexes[i];
+  for (var i = 0; i < nameemailitems.length; i++) {
+    var item = nameemailitems[i];
     var title = item.getTitle()
     titleRow.push(title)
   }
@@ -82,13 +82,13 @@ function getTitleRow(indexes) {
   return titleRow;
 }
 
-function getDataRows(formResponses, indexes) {
+function getDataRows(formResponses, nameemailitems) {
   var rows = [];
-  var titleRow = getTitleRow(indexes);
+  var titleRow = getTitleRow(nameemailitems);
   rows.push(titleRow);
   for (var i = 0; i < formResponses.length; i++) {
     var formResponse = formResponses[i];
-    var row = getDataRow(formResponse, indexes);
+    var row = getDataRow(formResponse, nameemailitems);
     rows.push(row);
   }
   return rows;
@@ -96,9 +96,9 @@ function getDataRows(formResponses, indexes) {
 
 function getData(form) {
   var items = form.getItems();
-  var indexes = getIndexes(items);
+  var nameemailitems = getNameEmailItems(items);
   var formResponses = form.getResponses();
-  var rows = getDataRows(formResponses, indexes)
+  var rows = getDataRows(formResponses, nameemailitems)
   return rows;
 }
 

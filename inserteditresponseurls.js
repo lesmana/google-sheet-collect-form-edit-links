@@ -58,7 +58,7 @@ function getIndexes(items) {
   return indexes;
 }
 
-function getData3(formResponse, indexes) {
+function getDataRow(formResponse, indexes) {
   var row = []
   for (var i = 0; i < indexes.length; i++) {
     var item = indexes[i];
@@ -82,13 +82,13 @@ function getTitleRow(indexes) {
   return titleRow;
 }
 
-function getData2(formResponses, indexes) {
+function getDataRows(formResponses, indexes) {
   var rows = [];
   var titleRow = getTitleRow(indexes);
   rows.push(titleRow);
   for (var i = 0; i < formResponses.length; i++) {
     var formResponse = formResponses[i];
-    var row = getData3(formResponse, indexes);
+    var row = getDataRow(formResponse, indexes);
     rows.push(row);
   }
   return rows;
@@ -98,7 +98,7 @@ function getData(form) {
   var items = form.getItems();
   var indexes = getIndexes(items);
   var formResponses = form.getResponses();
-  var rows = getData2(formResponses, indexes)
+  var rows = getDataRows(formResponses, indexes)
   return rows;
 }
 
